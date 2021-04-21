@@ -8,6 +8,7 @@ import java.util.Scanner;
 	   private int res;
 	   private String otvet ;
 	   
+	   
 	  
 	
 	    public void read() {
@@ -19,8 +20,8 @@ import java.util.Scanner;
 	        Scanner scanner = new Scanner(System.in);
 	        String text = scanner.nextLine();
 	        String[] blocks = text.split("[+-/*]");
-	  
-	            boolean flag = false;
+	        boolean flag1 = true;
+	        boolean flag = false;
 	            for (int i = 0; i < 10; i++){
 	                if (roman[i].equals(blocks[0]) || roman[i].equals(blocks[1])){
 	                    flag = true;
@@ -32,9 +33,10 @@ import java.util.Scanner;
 	                    operation = text.charAt(blocks[0].length());
 	                     res = Calculator.calculate(number1,number2,operation);
 	                     otvet = arabToRom(res);
-	                        
+	                     flag1 = false;
+	                }
 	                }  
-	                 if(arabic[i].equals(blocks[0]) || arabic[i].equals(blocks[1])) {                 
+	                 if(flag1) {                 
 	                number1 = Integer.parseInt(blocks[0]);
 	                operation = text.charAt(blocks[0].length());
 	                number2 = Integer.parseInt(blocks[1]);
@@ -42,12 +44,17 @@ import java.util.Scanner;
 	                otvet = String.valueOf(res);
 	                
 	                }
-	            } if ((number1 > 10 || number1 < 0) || (number2 > 10 || number2 < 0)) {
+	                
+	                
+	                
+	             if ((number1 > 10 || number1 < 0) || (number2 > 10 || number2 < 0)) {
 	            	System.out.print("eror");
 	                System.exit(0);
 	              } 
+
+	            
 	    }
-	       
+	    
 	    
 
 	    String arabToRom(int otvet) {
